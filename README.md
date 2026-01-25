@@ -4,6 +4,10 @@
 
     npx expo start 
 
+- Para baixar libs importante p rodar 
+
+    npx expo install react-native-paper react-native-safe-area-context
+    
 ```text
 ├── android
 │   ├── app
