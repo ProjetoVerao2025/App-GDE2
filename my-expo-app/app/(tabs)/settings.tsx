@@ -1,4 +1,4 @@
-// http://localhost:8081/disciplinas
+//http://localhost:8081/settings
 
 import { View } from 'react-native';
 import { Stack, useLocalSearchParams } from 'expo-router';
@@ -10,9 +10,9 @@ export default function Details() {
 
   return (
     <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Disciplinas' }} />
+      <Stack.Screen options={{ title: 'Profile' }} />
       <Container>
-        <ScreenContent path="screens/disciplinas.tsx" title={`Showing details for user ${name}`} />
+        <ScreenContent path="screens/profile.tsx" title={`Showing details for user ${name}`} />
       </Container>
     </View>
   );

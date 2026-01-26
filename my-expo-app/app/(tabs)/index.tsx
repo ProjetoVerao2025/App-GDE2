@@ -1,12 +1,12 @@
 // http://localhost:8081/
 
 import { Stack, Link } from 'expo-router';
-import {IconButton} from 'react-native-paper';
+// import {IconButton} from 'react-native-paper';
 import { View, Text, Pressable} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
+// import { Button } from '@/components/Button';
+// import { Container } from '@/components/Container';
+// import { ScreenContent } from '@/components/ScreenContent';
 
 export default function Home() {
   return (
