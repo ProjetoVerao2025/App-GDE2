@@ -10,7 +10,7 @@ export default function Details() {
 
   return (
     <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Profile' }} />
+      <Stack.Screen options={{ title: '' }} />
       <Container>
         <ScreenContent path="screens/profile.tsx" title={`Showing details for user ${name}`} />
       </Container>

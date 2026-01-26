@@ -17,6 +17,7 @@ export default function Home() {
   //   </Link>
   // </Container>
   <View className="flex-row justify-around items-center bg-white p-4 rounded-t-3xl shadow-lg absolute bottom-0 w-full">
+  <Stack.Screen options={{ title: '' }} />
   <Link href="/disciplinas" asChild>
     <Pressable className="items-center">
       <FontAwesome name="book" size={25} color="#4A148C" /> 

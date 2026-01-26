@@ -1,4 +1,4 @@
-import { Pressable, View } from 'react-native';
+import { Pressable} from 'react-native';
 import '../../global.css';
 import { Stack } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
@@ -27,7 +27,7 @@ export default function Layout() {
               <FontAwesome name="home" size={25} color="black" style={{ marginLeft: 15 }}/>
             </Pressable>
           </Link>
-        )
+        ),
       }}
     />;
 }
