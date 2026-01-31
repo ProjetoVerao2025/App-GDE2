@@ -21,16 +21,16 @@ export default function Layout() {
           fontWeight: 'bold',
         },
         headerRight: () => (
-          <View style={[styles.container, {flexDirection: 'row-reverse'}]}>
+          <View style={{flexDirection: 'row-reverse'}}>
           <Link href="/settings">
             <Pressable>
-              <FontAwesome name="cog" size={25} color="black" style={{ marginRight: 15 }}/>
+              <FontAwesome name="cog" size={25} color="black" />
             </Pressable>
           </Link>
           <Link href="/">
             <Pressable>
-              <FontAwesome name="home" size={25} color="black" style={{ marginRight: 15 }}/>
-            </Pressable>
+              <FontAwesome name="home" size={25} color="black" style={{ marginRight: 30 }}/>
+            </Pressable> 
           </Link>
           </View>
         ),
@@ -42,10 +42,6 @@ export default function Layout() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
   baseText: {
     fontFamily: 'Cochin',
   },
