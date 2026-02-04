@@ -1,6 +1,6 @@
 import { Pressable, View, Text, StyleSheet} from 'react-native';
 import '../../global.css';
-import React, {useState} from 'react';
+import React from 'react';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Stack, Link } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
