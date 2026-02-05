@@ -1,7 +1,7 @@
 // http://localhost:8081/
 
 import React from 'react';
-import {View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, ScrollView} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 const timeSlots = [
@@ -10,30 +10,34 @@ const timeSlots = [
 ]
 
 const daysWeek = [
-  "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+  "Mon", "Tue", "Wed", "Thu", "Fri"
 ]
 
 type ItemData = {
   time: string;
   code: string;
+  class: string;
   day: string;
 };
 
 const data: ItemData[] = [
   {
-    time: '10:00-12:00',
+    time: '14:00-16:00',
     code: 'MA311',
-    day: 'Segunda',
+    class: 'W',
+    day: 'Fri',
   },
   {
     time: '19:00-21:00',
     code: 'MC358',
-    day: 'Quarta',
+    day: 'Wed',
+    class: 'A',
   },
   {
     time: '19:00-21:00',
+    class: 'B',
     code: 'MC404',
-    day: 'Terca',
+    day: 'Tue',
   }
 ]
 
@@ -52,37 +56,50 @@ const Item = ({title, onPress, backgroundColor, textColor}: ItemProps) => (
 );
 
 export default function Home() {
-  const renderItem = ({item}) => (
-    <View>
-      <Text style={styles.cell}>{item.code}</Text>
-    </View>
-  )
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.heading}>Segunda</Text>
-            <Text style={styles.heading}>Terca</Text>
-            <Text style={styles.heading}>Quarta</Text>
-            <Text style={styles.heading}>Quinta</Text>
-            <Text style={styles.heading}>Sexta</Text>
+        <ScrollView  horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.container}>
+            <View style={styles.row}>
+              <View style={styles.timeCell} />
+              {daysWeek.map(day => (
+                <View key={day} style={styles.daysCell}>
+                  <Text>{day}</Text>
+                </View>))}
+              </View>
+              {timeSlots.map(time => (
+              <View key={time} style={styles.row}>
+                <View style={styles.timeCell}>
+                  <Text>{time}</Text>
+                </View>
+              {daysWeek.map(day => {
+                const classHere = data.find(
+                  c => c.day === day && c.time === time
+                );
+              return (
+              <View key={day} style={styles.cell}>
+                {classHere && (
+                  <View style={styles.classBlock}>
+                    <Text style={styles.blockText}>{classHere.code}</Text>
+                    <Text style={styles.blockText}>{classHere.class}</Text>
+                  </View>)}
+              </View>);
+                })}
+              </View>
+            ))}
           </View>
-        <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.time.toString()}/>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
-  );
-}
+)}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 30,
-    paddingHorizontal: 30,
+    justifyContent: "center",
+    alignContent: "center",
+    flexGrow: 1,
   },
   item: {
     backgroundColor: '#B3B1B1',
@@ -94,11 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   headerTopBar:{
-    backgroundColor: " #4A148C",
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    borderRadius: 5,
-    elevation: 2,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
   },
   header: {
     flexDirection: 'row',
@@ -108,21 +124,43 @@ const styles = StyleSheet.create({
   heading: {
     flex:1,
     fontSize: 15,
+    marginLeft: 120,
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 8,
-    marginHorizontal: 2,
-    elevation: 1,
-    borderRadius: 3,
-    borderColor: "#fff",
-    padding: 10,
-    backgroundColor: "#fff",
+    flexShrink: 0,
   },
   cell: {
-    fontSize: 15,
-    textAlign: 'left',
+    width: 100,
+    height: 100,
+    borderWidth: 1,
+  },
+  daysCell: {
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+  },
+  timeCell: {
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+  },
+  classBlock: {
     flex: 1,
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#ddd",
+    borderRadius: 50,
+    padding: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  blockText: {
+    fontFamily: "system-ui",
+    fontSize: 20,
   }
 });
