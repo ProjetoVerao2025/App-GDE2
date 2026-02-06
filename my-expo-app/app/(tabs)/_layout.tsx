@@ -1,10 +1,12 @@
-import { Pressable, View, Text, StyleSheet} from 'react-native';
+import { Pressable, View, Text, StyleSheet, ImageBackground} from 'react-native';
 import '../../global.css';
 import React from 'react';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Stack, Link } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
 import { Slot } from 'expo-router';
+
+const image = {url: 'my-expo-app/assets'}
 
 const Header = () => {
   const user = 'Absence';
@@ -59,9 +61,11 @@ const Footer = () => {
 export default function Layout() {
   return (
     <SafeAreaView style={{flex:1, backgroundColor: '#f3f3f3'}} edges={['top', 'left', 'right']}>
-      <Header />
-      <Slot />
-      <Footer />
+      <ImageBackground source={require('../../assets/Background.png')} resizeMode="cover" style={styles.image}>
+        <Header />
+        <Slot />
+        <Footer />
+      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -74,5 +78,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginLeft: 15,
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
