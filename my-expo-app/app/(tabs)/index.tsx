@@ -49,24 +49,36 @@ type ItemData = {
 
 // data vinda do backend devera ser colocada aqui (trocar const -> let)
 const data: ItemData[] = [
-  // {
-  //   time: '08:00-09:00',
-  //   code: 'MA111',
-  //   class: 'G',
-  //   day: 'Mon',
-  // },
-  // {
-  //   time: '09:00-10:00',
-  //   code: 'MA211',
-  //   class: 'H',
-  //   day: 'Tue',
-  // },
-  // {
-  //   time: '10:00-11:00',
-  //   code: 'MA111',
-  //   class: 'G',
-  //   day: 'Mon',
-  // },
+  {
+    time: '08:00-09:00',
+    code: 'MA323',
+    class: 'G',
+    day: 'Mon',
+  },
+  {
+    time: '08:00-09:00',
+    code: 'MA311',
+    class: 'H',
+    day: 'Mon',
+  },
+  {
+    time: '09:00-10:00',
+    code: 'MA211',
+    class: 'H',
+    day: 'Tue',
+  },
+  {
+    time: '10:00-11:00',
+    code: 'MA111',
+    class: 'G',
+    day: 'Mon',
+  },
+  {
+    time: '11:00-12:00',
+    code: 'MA111',
+    class: 'G',
+    day: 'Mon',
+  },
   {
     time: '14:00-15:00',
     code: 'MA311',
@@ -102,6 +114,12 @@ const data: ItemData[] = [
     code: 'MC404',
     class: 'B',
     day: 'Tue',
+  },
+  {
+    time: '21:00-23:00',
+    code: 'MC202',
+    class: 'E',
+    day: 'Mon',
   }
 ]
 
