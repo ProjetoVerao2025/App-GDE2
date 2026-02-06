@@ -1,7 +1,7 @@
 // http://localhost:8081/
 
 import React from 'react';
-import {View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, ScrollView} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 /* OUTPUT TYPE CLASS FROM BACKEND (MODEL)
@@ -47,7 +47,26 @@ type ItemData = {
   day: string;
 };
 
+// data vinda do backend devera ser colocada aqui (trocar const -> let)
 const data: ItemData[] = [
+  // {
+  //   time: '08:00-09:00',
+  //   code: 'MA111',
+  //   class: 'G',
+  //   day: 'Mon',
+  // },
+  // {
+  //   time: '09:00-10:00',
+  //   code: 'MA211',
+  //   class: 'H',
+  //   day: 'Tue',
+  // },
+  // {
+  //   time: '10:00-11:00',
+  //   code: 'MA111',
+  //   class: 'G',
+  //   day: 'Mon',
+  // },
   {
     time: '14:00-15:00',
     code: 'MA311',
@@ -121,11 +140,15 @@ const Item = ({title, onPress, backgroundColor, textColor}: ItemProps) => (
 
 // como lidar com sobreposicao de materias no mesmo dia e horario?
 export default function Home() {
+  const {width} = useWindowDimensions();
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
+      <SafeAreaView style={styles.safeArea}>
         {/* horizontal showsHorizontalScrollIndicator={false} vertical showsVerticalScrollIndicator={false} */}
-        <ScrollView> 
+        <ScrollView contentContainerStyle={styles.scrollContent}> 
+          <View>
+            <Text style={styles.messageHeader}>Your grid:</Text>
+          </View>
           <View style={styles.container}>
             <View style={styles.row}>
               <View style={styles.timeCell} />
@@ -168,8 +191,20 @@ const styles = StyleSheet.create({
     alignContent: "center",
     flexGrow: 1,
   },
+  safeArea: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 40,
+    paddingVertical: 60,
+    padding: 20
+  },
+  messageHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingVertical: 10
+  },
   item: {
-    backgroundColor: '#B3B1B1',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -198,20 +233,20 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
   cell: {
-    width: 100,
-    height: 100,
+    flex:1,
     borderWidth: 1,
+    justifyContent: "center",
+    alignContent: "center",
   },
   daysCell: {
-    width: 100,
-    height: 100,
+    flex:1,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
   },
   timeCell: {
-    width: 100,
-    height: 100,
+    width: 40,
+    height: 70,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
@@ -220,14 +255,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     width: "100%",
-    backgroundColor: "#ddd",
-    borderRadius: 50,
-    padding: 1,
+    borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#ddd",
   },
   blockText: {
     fontFamily: "system-ui",
-    fontSize: 20,
-  }
+    fontSize: 15,
+  },
 });
