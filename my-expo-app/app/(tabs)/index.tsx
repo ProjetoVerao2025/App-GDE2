@@ -4,11 +4,38 @@ import React from 'react';
 import {View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, ScrollView} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
+/* OUTPUT TYPE CLASS FROM BACKEND (MODEL)
+{
+    "status": 1,
+    "message": "Turmas encontradas",
+    "classes": [
+        {
+            "letter": "A",
+            "schedule": [
+                {
+                    "weekday": 1,
+                    "start_hour": 14,
+                    "lesson_count": 2
+                },
+                {
+                    "weekday": 5,
+                    "start_hour": 19,
+                    "lesson_count": 4
+                }
+            ]
+        }
+    ]
+}
+*/
+
 const timeSlots = [
-  "08:00-10:00", "10:00-12:00", "14:00-16:00",
-  "16:00-18:00", "19:00-21:00", "21:00-23:00"
+  "08:00-09:00", "09:00-10:00", "10:00-11:00", "11:00-12:00",
+  "14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00", 
+  "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00",
+  "22:00- 23:00",
 ]
 
+// ta usando enum, 1 = segunda, 5 = sexta
 const daysWeek = [
   "Mon", "Tue", "Wed", "Thu", "Fri"
 ]
@@ -22,24 +49,61 @@ type ItemData = {
 
 const data: ItemData[] = [
   {
-    time: '14:00-16:00',
+    time: '14:00-15:00',
     code: 'MA311',
     class: 'W',
     day: 'Fri',
   },
   {
-    time: '19:00-21:00',
-    code: 'MC358',
-    day: 'Wed',
-    class: 'A',
+    time: '15:00-16:00',
+    code: 'MA311',
+    class: 'W',
+    day: 'Fri',
   },
   {
-    time: '19:00-21:00',
-    class: 'B',
+    time: '19:00-20:00',
+    code: 'MC358',
+    class: 'A',
+    day: 'Wed',
+  },
+  {
+    time: '20:00-21:00',
+    code: 'MC358',
+    class: 'A',
+    day: 'Wed',
+  },
+  {
+    time: '19:00-20:00',
     code: 'MC404',
+    class: 'B',
+    day: 'Tue',
+  },
+  {
+    time: '20:00-21:00',
+    code: 'MC404',
+    class: 'B',
     day: 'Tue',
   }
 ]
+
+// let arr = new Set<string>();
+// for (var object of data){
+//   for (const [key, value] of Object.entries(object)) {
+//     if (key == 'time'){
+//       arr.add(value)
+//     }
+//   }
+// }
+// const timeArray = Array.from(arr)
+// const uniqueTimes = Array.from(new Set(data.map(item => item.time))).sort()
+const timeArray = Array.from(new Set(data.map(item => item.time))).sort();
+
+var Arr_size = parseInt("0");
+for (var i of timeArray) {
+  Arr_size += 1;
+  //console.log(i)
+}
+
 
 type ItemProps = {
   item: ItemData;
@@ -55,11 +119,13 @@ const Item = ({title, onPress, backgroundColor, textColor}: ItemProps) => (
   </TouchableOpacity>
 );
 
+// como lidar com sobreposicao de materias no mesmo dia e horario?
 export default function Home() {
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <ScrollView  horizontal showsHorizontalScrollIndicator={false}>
+        {/* horizontal showsHorizontalScrollIndicator={false} vertical showsVerticalScrollIndicator={false} */}
+        <ScrollView> 
           <View style={styles.container}>
             <View style={styles.row}>
               <View style={styles.timeCell} />
@@ -68,14 +134,15 @@ export default function Home() {
                   <Text>{day}</Text>
                 </View>))}
               </View>
-              {timeSlots.map(time => (
+              {/* tempo so aparece dinamicamente a medida dos hoarios que se tem */}
+              {timeArray.map(time => (
               <View key={time} style={styles.row}>
                 <View style={styles.timeCell}>
                   <Text>{time}</Text>
                 </View>
               {daysWeek.map(day => {
                 const classHere = data.find(
-                  c => c.day === day && c.time === time
+                  c => c.day === day && c.time == time
                 );
               return (
               <View key={day} style={styles.cell}>
@@ -85,7 +152,7 @@ export default function Home() {
                     <Text style={styles.blockText}>{classHere.class}</Text>
                   </View>)}
               </View>);
-                })}
+              })}
               </View>
             ))}
           </View>

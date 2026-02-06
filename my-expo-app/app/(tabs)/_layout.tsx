@@ -32,7 +32,7 @@ const Header = () => {
 
 const Footer = () => {
   return (
-   <View style={{flex:1, backgroundColor: '#D9D9D9'}} className="flex-row justify-around items-center bg-gray p-4 rounded-t-3xl shadow-lg absolute bottom-0 w-full">
+   <View className="flex-row justify-around items-center bg-gray p-4 rounded-t-3xl shadow-lg w-full">
         <Stack.Screen options={{ title: '' }} />
           <Link href="/disciplinas" asChild>
             <Pressable className="items-center">
