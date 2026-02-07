@@ -213,8 +213,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 40,
-    paddingVertical: 60,
+    paddingBottom: 40, 
+    paddingVertical: 60, 
     padding: 20
   },
   messageHeader: {
@@ -263,8 +263,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   timeCell: {
-    width: 40,
-    height: 70,
+    width: 90, // 40
+    height: 70, 
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
