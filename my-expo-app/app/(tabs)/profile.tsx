@@ -1,6 +1,6 @@
 //http://localhost:8081/profile
 
-import { Text, ScrollView, View , StyleSheet} from 'react-native';
+import { Text, ScrollView, View , StyleSheet, Pressable} from 'react-native';
 import {useLocalSearchParams } from 'expo-router';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {FontAwesome} from '@expo/vector-icons';
@@ -27,12 +27,18 @@ export default function Details() {
                 <FontAwesome name="address-card" size={25} color="black"></FontAwesome>
               </View>
             </View>
-            <View>
+            <View style={{marginVertical: 10}}>
               <Text style={styles.addInfo}>- Course: {courseNum} - {courseName}</Text>
               <Text style={styles.addInfo}>- RA: {ra}</Text>
               <Text style={styles.addInfo}>- Semester credits: {credits}</Text>
               <Text style={styles.addInfo}>- Academic Level: {studentLevel}</Text>
             </View>
+            {/* OnPress => fazer o logout da conta atual com tela de confirmacao*/}
+            <Pressable hitSlop={10}>
+              <View style={styles.logoutButton}>
+                <FontAwesome name="sign-out" size={25} color="black" ></FontAwesome>
+              </View>
+            </Pressable>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -79,4 +85,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginVertical: 10,
   },
+  logoutButton: {
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  }
 })
