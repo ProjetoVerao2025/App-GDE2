@@ -24,7 +24,7 @@ export default function Details() {
             <View className='flex-row justify-between items-center'>
               <Text style={styles.messageName}>{name} {surname}</Text>
               <View className="flex-row" style={{flexDirection: 'row-reverse'}}>
-                <FontAwesome name="user-circle-o" size={25} color="black"></FontAwesome>
+                <FontAwesome name="address-card" size={25} color="black"></FontAwesome>
               </View>
             </View>
             <View>
