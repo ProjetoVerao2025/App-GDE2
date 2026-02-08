@@ -37,19 +37,19 @@ const Footer = () => {
    <View style={{ backgroundColor: '#D9D9D9'}}className="flex-row justify-around items-center bg-gray p-4 rounded-t-3xl shadow-lg w-full">
         <Stack.Screen options={{ title: '' }} />
           <Link href="/disciplinas" asChild>
-            <Pressable className="items-center">
+            <Pressable hitSlop={10} className="items-center">
               <FontAwesome name="book" size={25} color="#000000" /> 
               <Text className="text-xs font-bold text-gray-800">Disciplines</Text>
             </Pressable>
           </Link>
           <Link href="/" asChild>
-             <Pressable className="items-center">
+             <Pressable hitSlop={10} className="items-center">
                <FontAwesome name="home" size={30} color="#000000"/>
                <Text className="text-xs font-bold text-gray-800">Home</Text>
             </Pressable> 
           </Link>
           <Link href="/notifications" asChild>
-            <Pressable className="items-center">
+            <Pressable hitSlop={10} className="items-center">
               <FontAwesome name="bell" size={25} color="#000000" />
               <Text className="text-xs font-bold text-gray-800">Notifications</Text>
             </Pressable>
