@@ -1,10 +1,9 @@
 // http://localhost:8081/disciplinas
 
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { View, Text, ScrollView, StyleSheet} from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Pressable} from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
-import { Button } from '@/components/Button';
 
 type disciplinas = {
   code: string,
@@ -51,19 +50,21 @@ export default function Details() {
         <ScrollView style={styles.scrollContent}>
           <View style={styles.container}>  
             <Text style={styles.title}>Matriculations:</Text>
-            {/* ter um map aqui em data que crie as box dinamically */}
-            <View style={styles.disciplineBox}>
-              <View className='gap-6'style={styles.row}>
-                <FontAwesome name="desktop" size={30} color="#000000"></FontAwesome>
-                <View style={styles.elementBox}>
-                  <Text style={styles.fontBox}>MC322</Text>
+            {data.map(discipline => (
+              // On Press = Leva ate a pagina da ementa da materia
+              <Pressable> 
+                <View style={styles.disciplineBox}>
+                  <View className='gap-6'style={styles.row}>
+                    <FontAwesome name="desktop" size={30} color="#000000"></FontAwesome>
+                    <View style={styles.elementBox}>
+                      <Text style={styles.fontBox}>{discipline.code}</Text>
+                    </View>
+                    <View style={styles.elementBox}>
+                      <Text style={styles.fontBox}>{discipline.class}</Text>
+                    </View>
+                  </View>
                 </View>
-                <View style={styles.elementBox}>
-                  <Text style={styles.fontBox}>C</Text>
-                </View>
-                {/* adicionar botao que leva ate ementa da materia */}
-              </View>
-            </View>
+              </Pressable> ))}
           </View>
         </ScrollView>
       </SafeAreaView>
