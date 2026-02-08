@@ -11,7 +11,7 @@ const image = {url: 'my-expo-app/assets'}
 const Header = () => {
   const user = 'Absence';
   return (
-    <View className="flex-row justify-between items-center bg-white p-4 rounded-t-3xl shadow-lg w-full">
+    <View className="flex-row justify-between items-center p-4 rounded-t-3xl w-full">
        <Text style={styles.titleText}>Hi, {user}!</Text>
        <View className="flex-row items-center gap-2" style={{flexDirection: 'row-reverse'}}>
            <Link href="/settings" asChild>
@@ -34,7 +34,7 @@ const Header = () => {
 
 const Footer = () => {
   return (
-   <View className="flex-row justify-around items-center bg-gray p-4 rounded-t-3xl shadow-lg w-full">
+   <View style={{ backgroundColor: '#D9D9D9'}}className="flex-row justify-around items-center bg-gray p-4 rounded-t-3xl shadow-lg w-full">
         <Stack.Screen options={{ title: '' }} />
           <Link href="/disciplinas" asChild>
             <Pressable className="items-center">
@@ -82,7 +82,5 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
-    width: "100%",
-    height: "100%",
   },
 });
