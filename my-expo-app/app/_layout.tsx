@@ -71,7 +71,7 @@ const InitialLayout = () => {
       router.replace("/(tabs)");
     } else if (!isSignedIn) {
       // If the user is not signed in, send them to the sign-in screen.
-      router.replace("/(auth)");
+      router.replace("/sign-in");
     }
   }, [isLoaded, isSignedIn, segments, router]);
 
