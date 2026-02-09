@@ -64,12 +64,13 @@ const InitialLayout = () => {
     if (!isLoaded) return; // Wait until Clerk is ready
 
     const inTabsGroup = segments[0] === "(tabs)";
+    const inAuthGroup = segments[0] === "(auth)"
 
     if (isSignedIn && !inTabsGroup) {
       // If the user is signed in and not in the main app area,
       // send them to the home screen.
       router.replace("/(tabs)");
-    } else if (!isSignedIn) {
+    } else if (!isSignedIn && !inAuthGroup) {
       // If the user is not signed in, send them to the sign-in screen.
       router.replace("/sign-in");
     }
