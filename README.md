@@ -2,13 +2,15 @@
 
 - To Runserver:
 
-    npx expo start 
-
+  npx expo start
 - Para baixar libs importante p rodar:
 
-    npx expo install react-native-paper react-native-safe-area-context
+  npx expo install react-native-paper react-native-safe-area-context
+  npx expo install expo-local-authentication expo-auth-session
+  npx expo install expo-secure-store
+  npm install @clerk/clerk-expo
 
-- Espo Router Documentation:
+Expo Router Documentation
 
 https://docs.expo.dev/router/basics/notation/
 
