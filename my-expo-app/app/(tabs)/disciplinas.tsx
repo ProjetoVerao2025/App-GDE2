@@ -4,6 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text, ScrollView, StyleSheet, Pressable} from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
+import React, { useState } from 'react'; 
 
 type disciplinas = {
   code: string,
@@ -33,17 +34,21 @@ const data: disciplinas[] = [
   },
 ]
 
-//DICIONARIO QUE LINKA UM ICONE DO FONT AWESOME COM UM INSTITUTO
-
-const iconsName = [
-  "calculator", "bar-chart", "desktop", "cube", "institution",
-  "laptop", "paper-plane", "pie-chart", "suitcase",
-]
 
 // Acredito que aqui deve ser uma stack para lidar com as ementas 
 // de cada materia separadamente (OLHAR DOCUMENTACAO NO README)
 
 export default function Details() {
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  //DICIONARIO QUE LINKA UM ICONE DO FONT AWESOME COM UM INSTITUTO?
+  const iconsName = [
+    "calculator", "bar-chart", "desktop", "cube", "institution",
+    "laptop", "paper-plane", "pie-chart", "suitcase",
+  ];
+  const selectNewRandomItem = () => {
+    const randomIndex = Math.floor(Math.random() * iconsName.length);
+    setSelectedItem(iconsName[randomIndex]);
+  };
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeArea}>
@@ -55,7 +60,12 @@ export default function Details() {
               <Pressable> 
                 <View style={styles.disciplineBox}>
                   <View className='gap-6'style={styles.row}>
-                    <FontAwesome name="desktop" size={30} color="#000000"></FontAwesome>
+                    {iconsName
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 1)
+                    .map((item, index) => (
+                      <FontAwesome key={index} name={item as any} size={30} color="#000000"></FontAwesome>
+                    ))}
                     <View style={styles.elementBox}>
                       <Text style={styles.fontBox}>{discipline.code}</Text>
                     </View>
