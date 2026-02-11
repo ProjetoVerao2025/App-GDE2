@@ -141,7 +141,6 @@ for (var i of timeArray) {
   //console.log(i)
 }
 
-
 type ItemProps = {
   item: ItemData;
   onPress: () => void;
@@ -163,39 +162,41 @@ export default function Home() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeArea}>
         {/* horizontal showsHorizontalScrollIndicator={false} vertical showsVerticalScrollIndicator={false} */}
-        <ScrollView contentContainerStyle={styles.scrollContent}> 
-          <View>
-            <Text style={styles.messageHeader}>Your grid:</Text>
-          </View>
-          <View style={styles.container}>
-            <View style={styles.row}>
-              <View style={styles.timeCell} />
-              {daysWeek.map(day => (
-                <View key={day} style={styles.daysCell}>
-                  <Text>{day}</Text>
-                </View>))}
-              </View>
-              {/* tempo so aparece dinamicamente a medida dos hoarios que se tem */}
-              {timeArray.map(time => (
-              <View key={time} style={styles.row}>
-                <View style={styles.timeCell}>
-                  <Text>{time}</Text>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.gridCentralizer}>
+            <View>
+              <Text style={styles.messageHeader}>Your grid:</Text>
+            </View>
+            <View style={styles.container}>
+              <View style={styles.row}>
+                <View style={styles.timeCell} />
+                {daysWeek.map(day => (
+                  <View key={day} style={styles.daysCell}>
+                    <Text>{day}</Text>
+                  </View>))}
                 </View>
-              {daysWeek.map(day => {
-                const classHere = data.find(
-                  c => c.day === day && c.time == time
-                );
-              return (
-              <View key={day} style={styles.cell}>
-                {classHere && (
-                  <View style={styles.classBlock}>
-                    <Text style={styles.blockText}>{classHere.code}</Text>
-                    <Text style={styles.blockText}>{classHere.class}</Text>
-                  </View>)}
-              </View>);
-              })}
-              </View>
-            ))}
+                {/* tempo so aparece dinamicamente a medida dos hoarios que se tem */}
+                {timeArray.map(time => (
+                <View key={time} style={styles.row}>
+                  <View style={styles.timeCell}>
+                    <Text>{time}</Text>
+                  </View>
+                {daysWeek.map(day => {
+                  const classHere = data.find(
+                    c => c.day === day && c.time == time
+                  );
+                return (
+                <View key={day} style={styles.cell}>
+                  {classHere && (
+                    <View style={styles.classBlock}>
+                      <Text style={styles.blockText}>{classHere.code}</Text>
+                      <Text style={styles.blockText}>{classHere.class}</Text>
+                    </View>)}
+                </View>);
+                })}
+                </View>
+              ))}
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -211,11 +212,12 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
+    // alignItems: "center",
   },
   scrollContent: {
     paddingBottom: 40, 
     paddingVertical: 60, 
-    padding: 20
+    padding: 20,
   },
   messageHeader: {
     fontSize: 20,
@@ -255,12 +257,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     alignContent: "center",
+    maxHeight: 70,
+    maxWidth: 90,
   },
   daysCell: {
     flex:1,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
+    maxHeight: 70,
+    maxWidth: 90,
   },
   timeCell: {
     width: 90, // 40
@@ -278,9 +284,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#ddd",
+    maxHeight: 70,
+    maxWidth: 90,
   },
   blockText: {
     fontFamily: "system-ui",
     fontSize: 15,
   },
+  gridCentralizer: {
+    alignSelf: "center",
+    width: "100%",
+    maxWidth: 540,
+  }
 });
