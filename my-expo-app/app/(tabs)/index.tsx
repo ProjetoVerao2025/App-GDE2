@@ -1,6 +1,7 @@
 // http://localhost:8081/
 
 import React from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
@@ -188,10 +189,16 @@ export default function Home() {
                 return (
                 <View key={day} style={styles.cell}>
                   {classHere && (
-                    <View style={styles.classBlock}>
+                    <LinearGradient
+                    colors={['#D9D9D9',"#9c9999ff"]}
+                    dither={true}
+                    end={{ x:0, y:1}}
+                    start={{ x:0, y:0}}
+                    locations={[0, 1]}
+                    style={styles.classBlock}>
                       <Text style={styles.blockText}>{classHere.code}</Text>
                       <Text style={styles.blockText}>{classHere.class}</Text>
-                    </View>)}
+                    </LinearGradient>)}
                 </View>);
                 })}
                 </View>
@@ -259,6 +266,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     maxHeight: 70,
     maxWidth: 90,
+    padding: 3
   },
   daysCell: {
     flex:1,
@@ -279,13 +287,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     width: "100%",
-    elevation: 10,
+    elevation: 5,
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ddd",
     maxHeight: 70,
     maxWidth: 90,
+    opacity: .9
   },
   blockText: {
     fontFamily: "system-ui",
