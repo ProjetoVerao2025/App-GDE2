@@ -5,6 +5,18 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Stack, Link } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
 import { Slot } from 'expo-router';
+import * as ScreenOrientation from 'expo-screen-orientation';
+
+async function GetOrientation() {
+  let orientation = await ScreenOrientation.getOrientationAsync();
+  // export declare enum Orientation {
+  //     UNKNOWN = 0,
+  //     PORTRAIT_UP = 1,
+  //     PORTRAIT_DOWN = 2,
+  //     LANDSCAPE_LEFT = 3,
+  //     LANDSCAPE_RIGHT = 4
+  return orientation
+}
 
 const image = {url: 'my-expo-app/assets'}
 
@@ -82,5 +94,12 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
+    width: "100%",
+    height: "100%",
+  },
+  landscapeImage: {
+    transform: [{rotate: '90deg'}],
+    flex: 1,
+    justifyContent: "center",
   },
 });
