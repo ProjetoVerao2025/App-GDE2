@@ -18,8 +18,8 @@ export default function Details() {
   const data : notData[] =[
     {
       time: "00:32",
-      horario: "14:00-16:00",
-      discipline: "MC211",
+      horario: "14:00-16:00", // class_time
+      discipline: "MC211", // course
       user: "KGM",
       type: "skip",
       day: "Mon", // Mudar para ser data, nao dia da semana random kkkkkk
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   notificationBlock: {
     flex: 1,
     borderRadius: 20,
-    backgroundColor: '#D9D9D9',
+    backgroundColor: '#D9D9D9', 
     opacity: .5,
     flexDirection: "row",
     marginVertical: 5

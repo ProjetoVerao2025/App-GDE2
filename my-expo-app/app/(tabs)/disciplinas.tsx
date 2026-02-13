@@ -6,6 +6,7 @@ import { useLocalSearchParams } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
 import React, { useState } from 'react'; 
 
+// campo id para cada disciplina pq o ararntes eh carente
 type disciplinas = {
   code: string,
   class: string,
@@ -40,7 +41,7 @@ const data: disciplinas[] = [
 
 export default function Details() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  //DICIONARIO QUE LINKA UM ICONE DO FONT AWESOME COM UM INSTITUTO?
+  //DICIONARIO QUE LINKA UM ICONE DO FONT AWESOME COM UM INSTITUTO !!!
   const iconsName = [
     "calculator", "bar-chart", "desktop", "cube", "institution",
     "laptop", "paper-plane", "pie-chart", "suitcase",
