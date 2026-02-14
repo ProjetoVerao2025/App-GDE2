@@ -2,13 +2,12 @@
 
 - To Runserver:
 
-    npx expo start 
-
+  npx expo start
 - Para baixar libs importante p rodar:
 
-    npx expo install react-native-paper react-native-safe-area-context
-
-- Espo Router Documentation:
+  npx expo install react-native-paper react-native-safe-area-context
+- npx expo install expo-linear-gradient
+- Expo Router Documentation:
 
 https://docs.expo.dev/router/basics/notation/
 
