@@ -14,11 +14,11 @@ type disciplinas = {
 
 const data: disciplinas[] = [
   {
-    code: "MC322",
+    code: "MA322",
     class: "C",
   },
   {
-    code: "MC311",
+    code: "MA311",
     class: "W",
   },
   {
@@ -26,11 +26,11 @@ const data: disciplinas[] = [
     class: "A",
   },
   {
-    code: "MC323",
+    code: "ME323",
     class: "C",
   },
   {
-    code: "MC032",
+    code: "TT032",
     class: "B",
   },
 ]
@@ -42,6 +42,12 @@ const data: disciplinas[] = [
 export default function Details() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   //DICIONARIO QUE LINKA UM ICONE DO FONT AWESOME COM UM INSTITUTO !!!
+  const iconRel = {
+    MA: ["calculator"],
+    MC: ["desktop", "laptop"],
+    ME: ["bar-chart", "pie-chart"],
+    other: ["cube", "institution", "paper-plane", "suitcase"],
+  }
   const iconsName = [
     "calculator", "bar-chart", "desktop", "cube", "institution",
     "laptop", "paper-plane", "pie-chart", "suitcase",
