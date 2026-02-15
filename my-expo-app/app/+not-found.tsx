@@ -1,6 +1,6 @@
 import { Link, Stack } from 'expo-router';
 
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 
 import { Container } from '@/components/Container';
 
@@ -10,6 +10,7 @@ export default function NotFoundScreen() {
       <Stack.Screen options={{ title: 'Oops!' }} />
       <Container>
         <Text className={styles.title}>{"This screen doesn't exist."}</Text>
+        <Image source={require("../assets/sry.png")}/>
         <Link href="/" className={styles.link}>
           <Text className={styles.linkText}>Go to home screen!</Text>
         </Link>
