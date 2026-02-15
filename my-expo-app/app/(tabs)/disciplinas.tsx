@@ -12,6 +12,7 @@ type disciplinas = {
   class: string,
 }
 
+// Course instead of discipline
 const data: disciplinas[] = [
   {
     code: "MA322",
@@ -35,6 +36,21 @@ const data: disciplinas[] = [
   },
 ]
 
+type institutes = 'MA' | 'MC' | 'ME' | "other"
+const getInstitute = (code:string): institutes => {
+  if(code.startsWith("MA")) {
+    return "MA";
+  }
+  else if(code.startsWith("MC")) {
+    return "MC";
+  }
+  else if(code.startsWith("ME")) {
+    return "ME";
+  }
+  else{
+    return "other";
+  }
+}
 
 // Acredito que aqui deve ser uma stack para lidar com as ementas 
 // de cada materia separadamente (OLHAR DOCUMENTACAO NO README)
@@ -42,11 +58,17 @@ const data: disciplinas[] = [
 export default function Details() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   //DICIONARIO QUE LINKA UM ICONE DO FONT AWESOME COM UM INSTITUTO !!!
-  const iconRel = {
-    MA: ["calculator"],
-    MC: ["desktop", "laptop"],
-    ME: ["bar-chart", "pie-chart"],
-    other: ["cube", "institution", "paper-plane", "suitcase"],
+  type rel = {
+    MA: Array<string>,
+    MC: Array<string>,
+    ME: Array<string>,
+    other: Array<string>,
+  }
+  const iconRel: {[id: string]: Array<string>} = {
+    "MA": ["calculator", "subscript"],
+    "MC": ["desktop", "laptop"],
+    "ME": ["bar-chart", "pie-chart"],
+    "other": ["cube", "institution", "paper-plane", "suitcase"],
   }
   const iconsName = [
     "calculator", "bar-chart", "desktop", "cube", "institution",
@@ -63,11 +85,12 @@ export default function Details() {
           <View style={styles.container}>  
             <Text style={styles.title}>Matriculations:</Text>
             {data.map(discipline => (
+              // const dictkey = getInstitute(discipline.code);
               // On Press = Leva ate a pagina da ementa da materia
-              <Pressable> 
+              <Pressable>
                 <View style={styles.disciplineBox}>
                   <View className='gap-6'style={styles.row}>
-                    {iconsName
+                    {iconRel[getInstitute(discipline.code)]
                     .sort(() => Math.random() - 0.5)
                     .slice(0, 1)
                     .map((item, index) => (
