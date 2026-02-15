@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    // padding: 5
   },
   fontBox: {
     fontSize: 20,

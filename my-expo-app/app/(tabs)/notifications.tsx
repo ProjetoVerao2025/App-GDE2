@@ -22,7 +22,7 @@ export default function Details() {
       discipline: "MC211", // course
       user: "KGM",
       type: "skip",
-      day: "Mon", // Mudar para ser data, nao dia da semana random kkkkkk
+      day: "12/01/2026", // Mudar para ser data, nao dia da semana random kkkkkk
     },
     {
       time: "14:34",
@@ -30,7 +30,7 @@ export default function Details() {
       discipline: "F259",
       user: "Y",
       type: "cancel",
-      day: "Tue"
+      day: "24/06/2026"
     },
     {
       time: "08:01",
@@ -38,7 +38,7 @@ export default function Details() {
       discipline: "MA323",
       user: "VHAM",
       type: "late",
-      day: "Fri",
+      day: "03/05/2026",
     },
     {
       time: "18:32",
@@ -46,13 +46,13 @@ export default function Details() {
       discipline: "MC358",
       user: "BEDUNADO",
       type: "exam",
-      day: "Wed",
+      day: "01/04/2026",
     },
   ];
   const persoMessages = {
-    late: "A sua aula de {discipline} fora remarcada ou teve seu horario padrao alterado para {day} as {horario}",
-    cancel: "A sua aula de {discipline} de {day} as {horario} fora cancelada",
-    skip: "O usuario {user} nao ira comparecer na aula de {discipline} as {horario} de {day}",
+    late: "A sua aula de {discipline} fora remarcada ou teve seu horario padrao alterado para {day} as {horario}.",
+    cancel: "A sua aula de {discipline} de {day} as {horario} fora cancelada.",
+    skip: "O usuario {user} nao ira comparecer na aula de {discipline} as {horario} de {day}.",
     exam: "A prova de {discipline} de {day} as {horario} se aproxima!",
   };
   // notification_type: "equivalent_icon_name"
@@ -61,7 +61,7 @@ export default function Details() {
     skip: "user-o", exam: "calendar-check-o" 
   } as const;
   const titleRelationship = {
-    late: "Late/Rescheduled Class", cancel: "Class Canceled", 
+    late: "Rescheduled/Late Class", cancel: "Class Canceled", 
     skip: "Skip Class", exam: "Exam`s Close" 
   } as const;
   const formatMessage = (not: notData) => {
