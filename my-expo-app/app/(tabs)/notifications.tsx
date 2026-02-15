@@ -113,12 +113,12 @@ const styles = StyleSheet.create({
     padding: 50
   },
   notificationBlock: {
-    flex: 1,
+    // flex: 1,
     borderRadius: 20,
     backgroundColor: '#D9D9D9', 
     opacity: .5,
     flexDirection: "row",
-    marginVertical: 5
+    marginVertical: 5,
   },
   icon: {
     marginLeft: 10,
@@ -126,9 +126,8 @@ const styles = StyleSheet.create({
   },
   textBlock: {
     padding: 10,
-    flex:3,
-    justifyContent: "space-between",
-    alignContent: "flex-end"
+    flex:1,
+    alignContent: "flex-end",
   },
   title: {
     fontWeight: "bold",
