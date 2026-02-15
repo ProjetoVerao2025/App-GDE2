@@ -1,5 +1,5 @@
 import { Link} from 'expo-router';
-import { Text, View, Image, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
+import { Text, View, Image, StyleSheet, ScrollView, useWindowDimensions, ImageBackground } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function NotFoundScreen() {
@@ -7,22 +7,26 @@ export default function NotFoundScreen() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.container}>
-            <View style={styles.row}>
-              <Text style={styles.title}>Sorry, this screen doesn't exist!</Text>
+        <ImageBackground
+          source={require("../assets/Background.png")}
+          style={styles.bg}>
+          <ScrollView contentContainerStyle={styles.scrollContent}>
+            <View style={styles.container}>
+              <View style={styles.row}>
+                <Text style={styles.title}>Sorry, this screen doesn't exist!</Text>
+              </View>
+              <Image 
+              style={[styles.image, {height: width * 1.2}]}
+              source={require("../assets/sry.png")} 
+              resizeMode="contain"/>
+              <View style={styles.row}>
+                <Link href="/" asChild>
+                  <Text style={styles.link}>Go to home screen!</Text>
+                </Link>
+              </View>
             </View>
-            <Image 
-            style={[styles.image, {height: width * 1.2}]}
-            source={require("../assets/sry.png")} 
-            resizeMode="contain"/>
-            <View style={styles.row}>
-              <Link href="/" asChild>
-                <Text style={styles.link}>Go to home screen!</Text>
-              </Link>
-            </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </ImageBackground>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -65,5 +69,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginVertical: 10,
     justifyContent: "center",
+  },
+  bg: {
+    width: "100%",
+    height: "100%"
   }
 });

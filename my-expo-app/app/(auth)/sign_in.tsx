@@ -1,33 +1,36 @@
 import React, { memo, useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions, Image} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions, Image, Pressable} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { emailValidator, passwordValidator } from '../../core/utils';
 import TextInput from '../../components/Textinput';
+import { Link, useRouter } from 'expo-router';
+import Button from '../../components/Button';
+import { DefaultTheme, Button as PaperButton } from 'react-native-paper';
 
-type Navigation = {
-  navigate: (scene: string) => void;
-};
+// export type Navigation = {
+//   navigate: (scene: string) => void;
+// };
 
-type Props = {
-  navigation: Navigation;
-};
+// type Props = {
+//   navigation: Navigation;
+// };
 
-export default function Login( {navigation} : Props) {
+export default function Login() {
     const {width} = useWindowDimensions();
+    const router = useRouter()
     const [email, setEmail] = useState({ value: '', error: '' });
     const [password, setPassword] = useState({ value: '', error: '' });
 
-    const _onLoginPressed = () => {
+    const LoginCheck = () => {
         const emailError = emailValidator(email.value);
         const passwordError = passwordValidator(password.value);
-
         if (emailError || passwordError) {
         setEmail({ ...email, error: emailError });
         setPassword({ ...password, error: passwordError });
         return;
         }
-
-        navigation.navigate('Dashboard');
+        // navigation.navigate('/');
+        router.replace("/") // ou router.push("/")
     };
     return(
     <SafeAreaProvider>
@@ -64,6 +67,23 @@ export default function Login( {navigation} : Props) {
                             errorText={password.error}
                             secureTextEntry
                         />
+                        <View>
+                            <Link href="/new_password" asChild>
+                                <Pressable hitSlop={10}>
+                                    <Text style={styles.forgotPassword}>Forgot your password?</Text>
+                                </Pressable>
+                            </Link>
+                        </View>
+                        <Button mode="contained" onPress={LoginCheck}>
+                            Login
+                        </Button>
+                        {/* <View style={styles.button}>
+                            <Link href="/" asChild>
+                                <Pressable hitSlop={10}>
+                                    <Text style={styles.text}>Login</Text>
+                                </Pressable>
+                            </Link>
+                        </View> */}
                     </View>
                 </View>
             </ScrollView>
@@ -100,5 +120,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginVertical: 10,
         justifyContent: "center"
-    }
+    },
+    forgotPassword: {
+        alignSelf: "flex-end"
+    },
 })
