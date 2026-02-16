@@ -30,6 +30,12 @@ export const raValidator = (ra: string) => {
   return ''
 };
 
+export const newPasswordValidator = (password1: string, password2: string) => {
+  if (!(password1 === password2)) return "As senhas novas nao condizem"
+
+  return ''
+}
+
 // fazer uma request para averiguar se aquele usuario com ra e senha (ra imbutido)
 // ja existe no banco de dados ou nao
 export const loginValidator = (email:string, password: string) => {
