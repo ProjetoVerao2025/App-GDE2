@@ -1,7 +1,8 @@
 // http://localhost:8081/
 
+import {Href, Link} from 'expo-router';
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions, Pressable} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 /* OUTPUT TYPE CLASS FROM BACKEND (MODEL)
@@ -188,10 +189,22 @@ export default function Home() {
               return (
               <View key={day} style={styles.cell}>
                 {classHere && (
+
+
+                    <Link href={"/disciplina/" + classHere.code as Href} asChild>
+                    <Pressable>
+
                   <View style={styles.classBlock}>
                     <Text style={styles.blockText}>{classHere.code}</Text>
                     <Text style={styles.blockText}>{classHere.class}</Text>
-                  </View>)}
+                  </View>
+
+                    </Pressable>
+
+                    </Link>
+
+                    )
+                }
               </View>);
               })}
               </View>
