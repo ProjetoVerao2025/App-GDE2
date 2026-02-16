@@ -24,5 +24,5 @@ export const nameValidator = (name: string) => {
 // fazer uma request para averiguar se aquele usuario com email e senha (ra imbutido)
 // ja existe no banco de dados ou nao
 export const loginValidator = (email:string, password: string) => {
-
+  
 }
