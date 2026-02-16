@@ -6,6 +6,8 @@ import TextInput from '../../components/Textinput';
 import { Link, useRouter } from 'expo-router';
 import Button from '../../components/Button';
 import { DefaultTheme, Button as PaperButton } from 'react-native-paper';
+import BackButton from '@/components/BackButton';
+import { FontAwesome } from '@expo/vector-icons';
 
 // export type Navigation = {
 //   navigate: (scene: string) => void;
@@ -35,6 +37,11 @@ export default function Login() {
     return(
     <SafeAreaProvider>
         <SafeAreaView style={styles.safeArea}>
+            <View style={{flexDirection: "row", padding:10}}>
+                <Pressable hitSlop={10} onPress={() => router.replace("/home_screen")}>
+                    <FontAwesome name={'arrow-left'} size={25} style={styles.backButton}></FontAwesome>
+                </Pressable>
+            </View>
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 <View style={styles.container}>
                     <Image 
@@ -46,6 +53,7 @@ export default function Login() {
                         <Text style={styles.welcome}>Welcome Back!!!</Text>
                     </View>
                     <View style={styles.container}>
+                        {/* Ra ou email? */}
                         <TextInput
                             label="Email"
                             returnKeyType="next"
@@ -124,4 +132,7 @@ const styles = StyleSheet.create({
     forgotPassword: {
         alignSelf: "flex-end"
     },
+    backButton: {
+        alignSelf: "flex-start"
+    }
 })
