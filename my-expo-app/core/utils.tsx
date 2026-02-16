@@ -21,8 +21,17 @@ export const nameValidator = (name: string) => {
   return '';
 };
 
-// fazer uma request para averiguar se aquele usuario com email e senha (ra imbutido)
+// verificacao se o ra existe no banco de dados scrapado
+export const raValidator = (ra: string) => {
+  if (!ra || ra.length <= 0) return 'RA cannot be empty'
+  if (ra.length != 6) return 'RA must be a 6 digit long number'
+  if (!/^\d{6}$/.test(ra)) return 'RA must contain only numbers'
+
+  return ''
+};
+
+// fazer uma request para averiguar se aquele usuario com ra e senha (ra imbutido)
 // ja existe no banco de dados ou nao
 export const loginValidator = (email:string, password: string) => {
   
-}
+};
