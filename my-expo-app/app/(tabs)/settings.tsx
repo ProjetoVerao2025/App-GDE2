@@ -3,6 +3,7 @@
 import { Text, ScrollView, View , StyleSheet, Pressable} from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {FontAwesome} from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 
 export default function Details() {
@@ -37,16 +38,20 @@ export default function Details() {
               </View>
             </View>
             {/* Privacy => link direto com change password */}
-            <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
-              <View style={styles.row} className='gap-2'>
-                {/* info, key */}
-                <FontAwesome name="lock" size={20}></FontAwesome>
-                <Text style={styles.settingsName}>Privacy</Text>
-              </View>
-              <View className="flex-row" style={{flexDirection: 'row-reverse'}}> 
-                <FontAwesome style={styles.arrow} name="angle-right" size={25}></FontAwesome>
-              </View>
-            </View>
+            {/* <Link href="/new_password">
+              <Pressable> */}
+                <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
+                  <View style={styles.row} className='gap-2'>
+                    {/* info, key */}
+                    <FontAwesome name="lock" size={20}></FontAwesome>
+                    <Text style={styles.settingsName}>Privacy</Text>
+                  </View>
+                  <View className="flex-row" style={{flexDirection: 'row-reverse'}}> 
+                    <FontAwesome style={styles.arrow} name="angle-right" size={25}></FontAwesome>
+                  </View>
+                </View>
+              {/* </Pressable>
+            </Link> */}
             <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
               <View style={styles.row} className='gap-2'>
                 <FontAwesome name="sign-out" size={20}></FontAwesome>

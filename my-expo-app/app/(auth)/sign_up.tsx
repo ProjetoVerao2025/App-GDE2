@@ -1,13 +1,25 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions, Image, Pressable} from 'react-native';
 import Button from '../../components/Button';
 import TextInput from '../../components/Textinput';
-import BackButton from '../../components/BackButton';
 import { Link, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import {emailValidator,passwordValidator,nameValidator,} from '../../core/utils';
 import { DefaultTheme } from 'react-native-paper';
+import { registerData } from '../../services/auth'
+
+// async function goodRegister(name:name) {
+        // const data = {name: name.value,email: email.value,password: password.value,}
+        // const response = await registerData(data)
+        // if (response){
+        //     router.replace("/sign_in")
+        // }
+        // else {
+        //     // bad request => erro
+        //     return;
+        // }
+    // }
 
 export default function Register() {
   const [name, setName] = useState({ value: '', error: '' });
@@ -26,7 +38,6 @@ export default function Register() {
       setPassword({ ...password, error: passwordError });
       return;
     }
-    router.replace("/sign_in")
   };
   return (
     <SafeAreaProvider>
