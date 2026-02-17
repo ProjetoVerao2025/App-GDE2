@@ -6,8 +6,8 @@
 - Para baixar libs importante p rodar:
 
   npx expo install react-native-paper react-native-safe-area-context
-- npx expo install expo-linear-gradient
-- Expo Router Documentation:
+  npx expo install expo-linear-gradient
+- Expo Router Documetntation:
 
 https://docs.expo.dev/router/basics/notation/
 
@@ -28,5 +28,4 @@ https://www.figma.com/design/VFge9OZmiCAEyLNJRIlIM9/PV25?node-id=0-1&p=f&m=dev
 https://www.figma.com/design/VFge9OZmiCAEyLNJRIlIM9/PV25?node-id=0-1&p=f&m=dev
 
 - FontAwesome lib:
-
-https://fontawesome.com/v4/icons/
+- [ ] https://fontawesome.com/v4/icons/

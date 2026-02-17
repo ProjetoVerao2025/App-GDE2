@@ -1,24 +1,34 @@
-import { forwardRef } from 'react';
-import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import { DefaultTheme, Button as PaperButton } from 'react-native-paper';
 
-type ButtonProps = {
-  title: string;
-} & TouchableOpacityProps;
+type Props = React.ComponentProps<typeof PaperButton>;
 
-export const Button = forwardRef<View, ButtonProps>(({ title, ...touchableProps }, ref) => {
-  return (
-    <TouchableOpacity
-      ref={ref}
-      {...touchableProps}
-      className={`${styles.button} ${touchableProps.className}`}>
-      <Text className={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
-  );
+const Button = ({ mode, style, children, ...props }: Props) => (
+  <PaperButton
+    style={[
+      styles.button,
+      mode === 'outlined' && { backgroundColor: DefaultTheme.colors.surface },
+      style,
+    ]}
+    labelStyle={styles.text}
+    mode={mode}
+    {...props}
+  >
+    {children}
+  </PaperButton>
+);
+
+const styles = StyleSheet.create({
+  button: {
+    width: '100%',
+    marginVertical: 10,
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    lineHeight: 26,
+  },
 });
 
-Button.displayName = 'Button';
-
-const styles = {
-  button: 'items-center bg-indigo-500 rounded-[28px] shadow-md p-4',
-  buttonText: 'text-white text-lg font-semibold text-center',
-};
+export default memo(Button);
