@@ -34,11 +34,11 @@ export default function Details() {
               <Text style={styles.addInfo}>- Academic Level: {studentLevel}</Text>
             </View>
             {/* OnPress => fazer o logout da conta atual com tela de confirmacao*/}
-            <Pressable hitSlop={10}>
+            {/* <Pressable hitSlop={10}>
               <View style={styles.logoutButton}>
                 <FontAwesome name="sign-out" size={25} color="black" ></FontAwesome>
               </View>
-            </Pressable>
+            </Pressable> */}
           </View>
         </ScrollView>
       </SafeAreaView>

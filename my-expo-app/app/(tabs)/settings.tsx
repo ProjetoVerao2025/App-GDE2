@@ -14,8 +14,48 @@ export default function Details() {
             {/* cada row = uma configuracao */}
             {/* Email
                 Username
-                Privacy (change password link with (auth)
+                Privacy (change password link with (auth)fire 
                 logout logic transfer from profile to here */}
+            <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
+              <View style={styles.row} className='gap-2'>
+                <FontAwesome name="envelope-o" size={20}></FontAwesome>
+                <Text style={styles.settingsName}>Email</Text>
+              </View>
+              <View className="flex-row" style={{flexDirection: 'row-reverse'}}> 
+                <FontAwesome style={styles.arrow} name="angle-right" size={25}></FontAwesome>
+              </View>
+            </View>
+            {/* Cada instancia dessa view deve ser um botao (OnPress functionality
+              disciplines, ementa, alike => use Stack) */}
+            <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
+              <View style={styles.row} className='gap-2'>
+                <FontAwesome name="user-o" size={20}></FontAwesome>
+                <Text style={styles.settingsName}>Username</Text>
+              </View>
+              <View className="flex-row" style={{flexDirection: 'row-reverse'}}> 
+                <FontAwesome style={styles.arrow} name="angle-right" size={25}></FontAwesome>
+              </View>
+            </View>
+            {/* Privacy => link direto com change password */}
+            <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
+              <View style={styles.row} className='gap-2'>
+                {/* info, key */}
+                <FontAwesome name="lock" size={20}></FontAwesome>
+                <Text style={styles.settingsName}>Privacy</Text>
+              </View>
+              <View className="flex-row" style={{flexDirection: 'row-reverse'}}> 
+                <FontAwesome style={styles.arrow} name="angle-right" size={25}></FontAwesome>
+              </View>
+            </View>
+            <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: 10}}>
+              <View style={styles.row} className='gap-2'>
+                <FontAwesome name="sign-out" size={20}></FontAwesome>
+                <Text style={styles.settingsName}>Logout</Text>
+              </View>
+              <View className="flex-row" style={{flexDirection: 'row-reverse'}}> 
+                <FontAwesome style={styles.arrow} name="angle-right" size={25}></FontAwesome>
+              </View>
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -35,8 +75,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
-    padding: 10,
-    flex: 1
+    justifyContent: "space-between",
+    // marginBottom: 10,
   },
   scrollContent: {
     paddingBottom: 40, 
@@ -44,12 +84,18 @@ const styles = StyleSheet.create({
     padding: 50
   },
   mainConfigBox: {
-    flex: 1,
     borderWidth: 1,
     backgroundColor: '#D9D9D9',
     // justifyContent: "center",
     // alignContent: "center",
     borderRadius: 20,
     padding: 20
+  },
+  arrow: {
+    alignSelf: "flex-end",
+  },
+  settingsName: {
+    justifyContent: "center",
+    alignContent: "center",
   },
 });
