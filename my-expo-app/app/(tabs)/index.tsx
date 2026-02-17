@@ -1,8 +1,9 @@
 // http://localhost:8081/
 
+import {Href, Link} from 'expo-router';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, useWindowDimensions, Pressable} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 /* OUTPUT TYPE CLASS FROM BACKEND (MODEL)
@@ -189,21 +190,53 @@ export default function Home() {
                 return (
                 <View key={day} style={styles.cell}>
                   {classHere && (
-                    <LinearGradient
-                    colors={['#D9D9D9',"#9c9999ff"]}
-                    dither={true}
-                    end={{ x:0, y:1}}
-                    start={{ x:0, y:0}}
-                    locations={[0, 1]}
-                    style={styles.classBlock}>
-                      <Text style={styles.blockText}>{classHere.code}</Text>
-                      <Text style={styles.blockText}>{classHere.class}</Text>
-                    </LinearGradient>)}
+                    // <Link href={"/disciplina/" + classHere.code as Href} asChild>
+                    //   <Pressable>
+                        <LinearGradient
+                        colors={['#D9D9D9',"#9c9999ff"]}
+                        dither={true}
+                        end={{ x:0, y:1}}
+                        start={{ x:0, y:0}}
+                        locations={[0, 1]}
+                        style={styles.classBlock}>
+                          <Text style={styles.blockText}>{classHere.code}</Text>
+                          <Text style={styles.blockText}>{classHere.class}</Text>
+                        </LinearGradient>
+                    //   {/* </Pressable>
+                    // </Link> */}
+                    )}
                 </View>);
                 })}
                 </View>
               ))}
-            </View>
+            {/* </View>
+              {daysWeek.map(day => {
+                const classHere = data.find(
+                  c => c.day === day && c.time == time
+                );
+              return (
+              <View key={day} style={styles.cell}>
+                {classHere && (
+
+
+                    <Link href={"/disciplina/" + classHere.code as Href} asChild>
+                    <Pressable>
+
+                  <View style={styles.classBlock}>
+                    <Text style={styles.blockText}>{classHere.code}</Text>
+                    <Text style={styles.blockText}>{classHere.class}</Text>
+                  </View>
+
+                    </Pressable>
+
+                    </Link>
+
+                    )
+                }
+              </View>);
+              })} */}
+              </View>
+            {/* ))} */}
           </View>
         </ScrollView>
       </SafeAreaView>

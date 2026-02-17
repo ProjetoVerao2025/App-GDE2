@@ -2,7 +2,7 @@
 
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text, ScrollView, StyleSheet, Pressable} from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { Link, Href, useLocalSearchParams } from 'expo-router';
 import {FontAwesome} from '@expo/vector-icons';
 import React, { useState } from 'react'; 
 
@@ -87,7 +87,10 @@ export default function Details() {
             {data.map(discipline => (
               // const dictkey = getInstitute(discipline.code);
               // On Press = Leva ate a pagina da ementa da materia
-              <Pressable>
+
+              <Link href={"/disciplina/" + discipline.code as Href} asChild>
+
+              <Pressable> 
                 <View style={styles.disciplineBox}>
                   <View className='gap-6'style={styles.row}>
                     {iconRel[getInstitute(discipline.code)]
@@ -104,7 +107,10 @@ export default function Details() {
                     </View>
                   </View>
                 </View>
-              </Pressable> ))}
+              </Pressable> 
+
+              </Link>
+))}
           </View>
         </ScrollView>
       </SafeAreaView>
